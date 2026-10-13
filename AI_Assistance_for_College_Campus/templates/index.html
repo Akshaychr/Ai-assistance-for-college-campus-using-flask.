@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#103c35">
+  <title>Soundarya Institute of Management and Science | Campus Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Soundarya Institute campus assistant home"><span class="brand-mark">S</span><span>Soundarya Institute of Management and Science</span></a>
+      <span class="top-note"><i></i> Campus Assistant</span>
+    </header>
+    <main class="layout">
+      <section class="welcome">
+        <span class="eyebrow">YOUR CAMPUS, MADE EASIER</span>
+        <h1>Good questions.<br><em>Clear answers.</em></h1>
+        <p>Ask about programs, the library, canteen, events, classes, and campus services. Your Soundarya campus guide is ready to help.</p>
+        <div class="welcome-stats"><span><b>{{ faqs|length }}</b> helpful answers</span><span class="stat-divider"></span><span><b>{{ categories|length }}</b> campus topics</span></div>
+        <div class="leaf-art" aria-hidden="true"><span></span><span></span><span></span></div>
+      </section>
+      <section class="assistant-card" aria-label="Campus assistant">
+        <div class="assistant-head"><div class="assistant-avatar">✦</div><div><strong>Campus Assistant</strong><span><i></i> Here to help</span></div><button class="icon-button" id="clear-chat" title="Clear conversation" aria-label="Clear conversation">↻</button></div>
+        <div class="chat-area" id="chat-area" aria-live="polite">
+          <div class="message assistant-message"><div class="mini-avatar">✦</div><div class="bubble"><p>Hi! Welcome to Soundarya Institute of Management and Science. What can I help you find today?</p><small>Soundarya Campus Assistant · just now</small></div></div>
+          <div class="suggestion-label">POPULAR QUESTIONS</div>
+          <div class="suggestions">
+            <button class="suggestion" data-question="What programs are offered at Soundarya Institute?">Programs offered <span>↗</span></button>
+            <button class="suggestion" data-question="What are the library services and timings?">Library services <span>↗</span></button>
+            <button class="suggestion" data-question="What food is available in the canteen?">Canteen information <span>↗</span></button>
+            <button class="suggestion" data-question="What events are happening at college?">College events <span>↗</span></button>
+          </div>
+        </div>
+        <form class="composer" id="question-form"><label class="sr-only" for="question">Ask a campus question</label><input id="question" name="question" placeholder="Ask anything about campus…" autocomplete="off" required><button type="submit" aria-label="Send question">↑</button></form>
+        <div class="card-foot">Answers are based on the campus guide. <a href="#topics">Browse topics</a></div>
+      </section>
+    </main>
+    <section class="topics" id="topics"><div class="topics-heading"><div><span class="eyebrow">FIND YOUR WAY</span><h2>Explore campus topics</h2></div><p>Choose a topic to see common questions and quick answers.</p></div>
+      <div class="topic-grid">{% for category in categories %}<button class="topic-chip" data-category="{{ category }}"><span class="topic-icon">{% if 'Admission' in category %}✦{% elif 'Academic' in category %}▤{% elif 'Fees' in category %}＄{% elif 'Campus' in category %}⌂{% elif 'Housing' in category %}⌖{% elif 'Health' in category %}♡{% elif 'Technology' in category %}⌘{% elif 'Student' in category %}✳{% else %}◎{% endif %}</span>{{ category }}<span class="chip-arrow">↗</span></button>{% endfor %}</div>
+    </section>
+    <footer><span>Soundarya Institute of Management and Science <span class="footer-dot">·</span> Campus help, all in one place</span><span>For emergencies, contact campus security or local emergency services.</span></footer>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

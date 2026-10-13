@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f1">
+  <title>Soundarya Institute | Campus Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='campus.css') }}">
+</head>
+<body>
+  <div class="app-frame">
+    <aside class="sidebar">
+      <a class="school-lockup" href="/" aria-label="Soundarya Institute campus assistant home">
+        <span class="school-seal">S</span><span class="school-name">SOUNDARYA<span>INSTITUTE OF MANAGEMENT<br>AND SCIENCE</span></span>
+      </a>
+      <div class="sidebar-rule"></div>
+      <p class="side-label">CAMPUS DESK</p>
+      <button class="side-link selected" type="button"><span class="side-icon">⌂</span> Ask Campus Assistant <span class="side-current"></span></button>
+      <a class="side-link" href="#topics"><span class="side-icon">▦</span> Browse all services</a>
+      <p class="side-label topic-label">QUICK TOPICS</p>
+      <nav class="side-topics" aria-label="Campus topics">
+        {% for category in categories %}<button class="side-topic" type="button" data-category="{{ category }}"><span class="topic-dot dot-{{ loop.index0 % 6 }}"></span>{{ category }}</button>{% endfor %}
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="transport-mini"><span class="bus-icon">↗</span><div><b>Need a campus bus?</b><p>Check routes around the 10 km service area.</p><button type="button" data-question="Does Soundarya Institute provide bus service within a 10 km radius?">Ask about bus service <span>→</span></button></div></div>
+        <div class="side-help"><span class="help-mark">?</span><span>Need urgent help?<br><b>Contact campus security</b></span><span class="help-arrow">↗</span></div>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="school-seal">S</span><b>Soundarya Institute</b></div>
+        <div class="breadcrumb"><span>Student services</span><span class="crumb-slash">/</span><b>Campus Assistant</b></div>
+        <div class="topbar-right"><span class="open-status"><i></i> Online campus guide</span><button class="about-button" type="button" onclick="document.querySelector('#about-note').scrollIntoView({behavior:'smooth'})">About this assistant <span>↗</span></button></div>
+      </header>
+
+      <div class="content-wrap">
+        <section class="hero-row">
+          <div class="hero-copy"><div class="eyebrow"><span class="sparkle">✳</span> YOUR SOUNDARYA CAMPUS COMPANION</div><h1>Campus life,<br><em>made a little easier.</em></h1><p>Get quick guidance on college programs, student services, and the everyday things that help campus feel like home.</p>
+            <div class="hero-meta"><span class="meta-icon">✦</span><span><b>{{ faqs|length }} helpful answers</b><small>Across {{ categories|length }} campus topics</small></span><span class="meta-divider"></span><span class="meta-icon leaf">⌁</span><span><b>Here when you need help</b><small>Ask in your own words</small></span></div>
+          </div>
+          <div class="mascot-stage"><div class="mascot-orbit orbit-one"></div><div class="mascot-orbit orbit-two"></div><span class="float-star star-one">✦</span><span class="float-star star-two">✳</span><span class="mascot-note">Hi, I’m <b>Mira!</b><br>Your campus guide</span><img class="mascot" src="{{ url_for('static', filename='mira.svg') }}" alt="Mira, a friendly green campus assistant robot" /></div>
+        </section>
+
+        <section class="workspace-grid">
+          <section class="chat-card" aria-label="Chat with the campus assistant">
+            <div class="chat-titlebar"><div class="bot-badge"><img src="{{ url_for('static', filename='mira.svg') }}" alt=""></div><div><h2>Ask Mira</h2><p><i></i> Soundarya campus guide</p></div><button class="reset-button" id="clear-chat" title="Start a new conversation" aria-label="Start a new conversation">↻</button></div>
+            <div class="chat-area" id="chat-area" aria-live="polite">
+              <div class="welcome-message"><div class="message-avatar"><img src="{{ url_for('static', filename='mira.svg') }}" alt=""></div><div class="message-content"><div class="message-bubble"><span class="bubble-kicker">MIRA · CAMPUS GUIDE</span><p>Namaste! 👋 I’m Mira, your Soundarya campus guide. What would you like to know today?</p></div><small class="message-time">Just now <span>·</span> Ready to help</small></div></div>
+              <div class="prompt-heading"><span>NOT SURE WHERE TO START?</span><span class="prompt-line"></span></div>
+              <div class="prompt-grid">
+                <button class="prompt-card" type="button" data-question="What programs are offered at Soundarya Institute?"><span class="prompt-icon programs-icon">▤</span><span><b>Explore programs</b><small>Courses & eligibility</small></span><span class="prompt-arrow">↗</span></button>
+                <button class="prompt-card" type="button" data-question="What are the library services and timings?"><span class="prompt-icon library-icon">▧</span><span><b>Visit the library</b><small>Books, hours & study</small></span><span class="prompt-arrow">↗</span></button>
+                <button class="prompt-card" type="button" data-question="What food is available in the canteen?"><span class="prompt-icon canteen-icon">♨</span><span><b>Find the canteen</b><small>Menu & timings</small></span><span class="prompt-arrow">↗</span></button>
+                <button class="prompt-card" type="button" data-question="What events are happening at Soundarya Institute?"><span class="prompt-icon events-icon">✳</span><span><b>Campus events</b><small>What’s happening</small></span><span class="prompt-arrow">↗</span></button>
+              </div>
+            </div>
+            <form class="composer" id="question-form"><label class="sr-only" for="question">Ask Mira a question</label><span class="composer-sparkle">✳</span><input id="question" name="question" placeholder="Ask about your campus…" autocomplete="off" required><button type="submit" aria-label="Send question">Send <span>↑</span></button></form>
+            <div class="chat-disclaimer">Mira uses the campus guide to find an answer. <a href="#about-note">Learn more</a></div>
+          </section>
+
+          <aside class="right-rail">
+            <section class="rail-card services-card"><div class="rail-heading"><div><span class="rail-kicker">CAMPUS DIRECTORY</span><h2>Find your answer</h2></div><span class="heading-spark">✦</span></div><p class="rail-intro">A little shortcut to the things students ask about most.</p><div class="service-list">
+              <button type="button" class="service-row" data-category="Library"><span class="service-icon service-library">▧</span><span><b>Library</b><small>Study, borrow, discover</small></span><span class="service-go">↗</span></button>
+              <button type="button" class="service-row" data-category="Canteen"><span class="service-icon service-canteen">♨</span><span><b>Canteen</b><small>Food, menu & timings</small></span><span class="service-go">↗</span></button>
+              <button type="button" class="service-row" data-category="Programs"><span class="service-icon service-programs">▤</span><span><b>Programs</b><small>Courses & admissions</small></span><span class="service-go">↗</span></button>
+              <button type="button" class="service-row" data-category="Events"><span class="service-icon service-events">✳</span><span><b>Events</b><small>Activities & workshops</small></span><span class="service-go">↗</span></button>
+            </div></section>
+            <section class="rail-card bus-card"><div class="bus-card-top"><span class="bus-illustration">▰</span><span class="bus-pill"><i></i> STUDENT TRANSPORT</span></div><h3>Room for one more<br>on the bus?</h3><p>Ask about Soundarya bus coverage for students living within approximately <b>10 km</b> of campus.</p><button type="button" data-question="Does Soundarya Institute provide bus service within a 10 km radius?">Explore bus services <span>→</span></button><div class="route-decoration"><span>10 km</span><i></i><b>✦</b></div></section>
+            <div class="safety-note"><span>♡</span><p><b>Your wellbeing matters.</b><br>For emergencies, contact campus security or local emergency services.</p></div>
+          </aside>
+        </section>
+
+        <section class="all-topics" id="topics"><div class="section-heading"><div><span class="rail-kicker">MORE WAYS TO GET HELP</span><h2>Explore all campus topics</h2></div><p>Pick a topic and Mira will find a few helpful answers.</p></div><div class="topic-pills">{% for category in categories %}<button class="topic-pill" data-category="{{ category }}" type="button"><span>✦</span>{{ category }}<b>↗</b></button>{% endfor %}</div></section>
+        <footer id="about-note"><span class="footer-school">S <b>Soundarya Institute of Management and Science</b></span><span>Mira is a campus FAQ guide. Please verify current schedules, routes, and policies with the institute.</span></footer>
+      </div>
+    </main>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

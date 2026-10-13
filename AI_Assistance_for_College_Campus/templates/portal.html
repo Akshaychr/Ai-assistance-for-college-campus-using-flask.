@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f1e9">
+  <title>Campus Information Desk | Soundarya Institute</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='portal.css') }}">
+</head>
+<body>
+  <div class="topline"><div class="page-width topline-inner"><span><i class="location-mark">⌖</i> SOUNDARYA INSTITUTE OF MANAGEMENT &amp; SCIENCE <span class="top-divider">/</span> BENGALURU</span><a href="https://soundarya.edu.in/" target="_blank" rel="noopener">Visit institute website <span>↗</span></a></div></div>
+  <header class="site-header page-width">
+    <a class="identity" href="/" aria-label="Soundarya Institute home"><span class="seal"><span>S</span><i></i></span><span class="identity-text"><b>Soundarya</b><small>Institute of Management &amp; Science</small></span></a>
+    <nav class="main-nav" aria-label="Main navigation"><a class="nav-active" href="#home">Campus home</a><a href="#programs">Academics</a><a href="#services">Student services</a><a href="#campus-life">Campus life</a></nav>
+    <a class="header-cta" href="https://admissions.soundarya.edu.in/" target="_blank" rel="noopener">Admissions <span>↗</span></a>
+  </header>
+
+  <main id="home" class="page-width">
+    <section class="hero">
+      <div class="hero-copy"><div class="hero-kicker"><span class="kicker-rule"></span> A GUIDE TO YOUR CAMPUS</div><h1>Make yourself<br><em>at home here.</em></h1><p>Find your way around student life at Soundarya. Ask a question, explore campus services, or get pointed to the right place.</p><div class="hero-actions"><a class="primary-action" href="#ask-mira">Ask the campus guide <span>↓</span></a><a class="text-action" href="#services">Explore student services <span>↗</span></a></div><div class="hero-note"><span class="note-seal">✳</span><span><b>A little help goes a long way.</b><small>Programs, campus services, and everyday questions.</small></span></div></div>
+      <div class="hero-art"><div class="art-sun"></div><div class="art-caption">LEARN · TAKE PART · BELONG</div><img src="{{ url_for('static', filename='campus-illustration.svg') }}" alt="Illustration of a welcoming college campus with leafy trees and an arched entrance"><div class="art-label"><span>SIMS</span><small>YOUR CAMPUS<br>INFORMATION DESK</small></div></div>
+      <div class="hero-index"><span>01</span><i></i><span>04</span></div>
+    </section>
+
+    <section class="welcome-strip" aria-label="Campus assistant introduction"><div class="welcome-persona"><img src="{{ url_for('static', filename='mira.svg') }}" alt=""><span><b>Meet Mira</b><small>Your friendly campus guide</small></span></div><p>Need a quick answer? Mira can help you find information from the campus guide.</p><a href="#ask-mira">Start a conversation <span>→</span></a></section>
+
+    <section class="main-grid">
+      <section class="assistant-panel" id="ask-mira" aria-label="Ask the campus guide">
+        <div class="section-overline"><span>STUDENT HELP DESK</span><span class="online"><i></i> CAMPUS GUIDE</span></div>
+        <div class="assistant-heading"><div><h2>What can we help<br>you find?</h2><p>Ask a campus question in your own words.</p></div><div class="heading-emblem">✳</div></div>
+        <div class="chat-area" id="chat-area" aria-live="polite">
+          <div class="welcome-message"><div class="message-avatar"><img src="{{ url_for('static', filename='mira.svg') }}" alt=""></div><div class="message-content"><div class="message-bubble"><span class="bubble-kicker">MIRA · SOUNDARYA CAMPUS GUIDE</span><p>Hi! I can help you find information about programs, the library, canteen, events, transport, and more. What would you like to know?</p></div><small class="message-time">A quick answer is just a question away.</small></div></div>
+          <div class="suggestion-label">A FEW PLACES TO START</div>
+          <div class="suggestion-row"><button type="button" data-question="What programs are offered at Soundarya Institute?">Programs <span>↗</span></button><button type="button" data-question="What food is available in the canteen?">Canteen menu <span>↗</span></button><button type="button" data-question="What are the library services and timings?">Library <span>↗</span></button><button type="button" data-question="Does Soundarya Institute provide bus service within a 10 km radius?">Bus service <span>↗</span></button></div>
+        </div>
+        <form class="composer" id="question-form"><label class="sr-only" for="question">Ask a campus question</label><input id="question" name="question" placeholder="Type your question here…" autocomplete="off" required><button type="submit" aria-label="Send question">Ask Mira <span>↑</span></button></form>
+        <div class="assistant-foot"><span>Answers come from the campus FAQ guide.</span><button id="clear-chat" type="button" title="Start a new conversation" aria-label="Start a new conversation">Start over ↻</button></div>
+      </section>
+
+      <aside class="directory-column">
+        <section class="directory-panel" id="services"><div class="panel-top"><div><span class="panel-eyebrow">CAMPUS DIRECTORY</span><h2>Find your place</h2></div><a href="#all-topics" aria-label="See all campus topics">View all ↗</a></div><div class="service-directory">
+          <button data-category="Library" type="button"><span class="directory-symbol library-symbol">▤</span><span><b>Library</b><small>Reading, research &amp; study</small></span><span class="row-arrow">↗</span></button>
+          <button data-category="Canteen" type="button"><span class="directory-symbol food-symbol">♨</span><span><b>Canteen</b><small>Food, menu &amp; timings</small></span><span class="row-arrow">↗</span></button>
+          <button data-category="Programs" type="button"><span class="directory-symbol study-symbol">▧</span><span><b>Programs</b><small>Courses &amp; admissions</small></span><span class="row-arrow">↗</span></button>
+          <button data-category="Events" type="button"><span class="directory-symbol events-symbol">✳</span><span><b>Events</b><small>Activities &amp; workshops</small></span><span class="row-arrow">↗</span></button>
+          <button data-category="Housing & Transport" type="button"><span class="directory-symbol bus-symbol">↗</span><span><b>Bus service</b><small>Routes &amp; pickup points</small></span><span class="row-arrow">↗</span></button>
+        </div></section>
+
+        <section class="program-panel" id="programs"><div class="panel-top"><div><span class="panel-eyebrow">ACADEMIC PATHWAYS</span><h2>Find your direction</h2></div><span class="program-mark">SIMS</span></div><p>Explore undergraduate and postgraduate options at Soundarya.</p><div class="program-links"><a href="https://soundarya.edu.in/ug/" target="_blank" rel="noopener"><span>Undergraduate</span><b>B.Com · BBA · BCA · BA · B.Sc</b><span class="row-arrow">↗</span></a><a href="https://soundarya.edu.in/" target="_blank" rel="noopener"><span>Postgraduate</span><b>MBA · M.Com · MCA · M.Sc</b><span class="row-arrow">↗</span></a></div><a class="program-foot" href="https://soundarya.edu.in/" target="_blank" rel="noopener">See program details on the institute website <span>→</span></a></section>
+
+        <section class="contact-panel"><span class="contact-icon">✆</span><div><small>NEED ADMISSIONS HELP?</small><a href="tel:+916269000092">+91 62690 00092</a><span>Soundarya Institute admissions</span></div><a class="contact-arrow" href="https://soundarya.edu.in/contact-us/" target="_blank" rel="noopener" aria-label="Institute contact details">↗</a></section>
+      </aside>
+    </section>
+
+    <section class="campus-life" id="campus-life"><div class="life-title"><span class="panel-eyebrow">MORE THAN THE CLASSROOM</span><h2>There’s a lot to be part of.</h2></div><p>Discover cultural activities, student clubs, sports, workshops, and campus announcements. Ask Mira where to find details—or check the latest updates from the institute.</p><a href="https://soundarya.edu.in/" target="_blank" rel="noopener">Explore campus life <span>↗</span></a><div class="life-decoration" aria-hidden="true">S</div></section>
+
+    <section class="all-topics" id="all-topics"><div class="topics-heading"><div><span class="panel-eyebrow">QUICK REFERENCE</span><h2>Browse all help topics</h2></div><span>Choose a topic to see common questions.</span></div><div class="topic-list">{% for category in categories %}<button class="topic-pill" data-category="{{ category }}" type="button">{{ category }} <b>↗</b></button>{% endfor %}</div></section>
+    <footer><span class="footer-brand"><span class="seal seal-small"><span>S</span><i></i></span><b>Soundarya Institute of Management &amp; Science</b></span><span>Campus guide · Bengaluru</span><span>For emergencies, contact campus security or local emergency services.</span></footer>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
